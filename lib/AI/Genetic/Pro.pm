@@ -373,23 +373,17 @@ sub as_value {
 # ALGORITHM ############################################################
 #=======================================================================
 sub _calculate_fitness_all {
+	
 	my ($self) = @_;
 	
 	$self->_fitness( { } );
-	$self->_fitness->{$_} = $self->fitness()->($self, $self->chromosomes->[$_]) 
-		for 0..$#{$self->chromosomes};
 
-# sorting the population is not necessary	
-#	my (@chromosomes, %fitness);
-#	for my $idx (sort { $self->_fitness->{$a} <=> $self->_fitness->{$b} } keys %{$self->_fitness}){
-#		push @chromosomes, $self->chromosomes->[$idx];
-#		$fitness{$#chromosomes} = $self->_fitness->{$idx};
-#		delete $self->_fitness->{$idx};
-#		delete $self->chromosomes->[$idx];
-#	}
-#	
-#	$self->_fitness(\%fitness);
-#	$self->chromosomes(\@chromosomes);
+	#  process the chromosomes in parallel
+	foreach my $chromosome ( 0 .. $#{$self->chromosomes} ) {
+
+		$self->_fitness->{$chromosome} = $self->fitness()->($self, $self->chromosomes->[$chromosome]); 
+
+	}
 
 	return;
 }
