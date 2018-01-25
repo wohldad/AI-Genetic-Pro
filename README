@@ -30,6 +30,7 @@ SYNOPSIS
             -history         => 1,                # remember best results
             -preserve        => 3,                # remember the bests
             -variable_length => 1,                # turn variable length ON
+            -threads         => 2,                # run fitness tests in parallel
         );
         
         # init population of 32-bit vectors
@@ -351,7 +352,7 @@ METHODS
 
                     where $n is number of points for crossing.
 
-                PointsAdvenced
+                PointsAdvanced
                     Crossover in one or many points. After crossover the
                     best chromosomes/individuals from all parents and
                     chidren are selected for the new generation. For
@@ -408,6 +409,10 @@ METHODS
 
                 OX  OX method defined by Davis (?) in 1985. Parameters:
                     *none*.
+
+        -threads
+                Run fitness tests in parallel on multi core machines for
+                faster results (default: *1*).
 
         -cache  This defines whether a cache should be used. Allowed values
                 are 1 or 0 (default: *0*).

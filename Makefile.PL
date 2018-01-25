@@ -1,6 +1,6 @@
 use ExtUtils::MakeMaker;
 WriteMakefile(
-    'NAME'	=> 'AI::Genetic::Pro',
+    NAME	      => 'AI::Genetic::Pro',
     AUTHOR        => 'Lukasz Strzelecki <strzelec@rswsystems.pl>',
     VERSION_FROM  => 'lib/AI/Genetic/Pro.pm',
     ABSTRACT_FROM => 'lib/AI/Genetic/Pro.pm',
@@ -18,6 +18,15 @@ WriteMakefile(
 		'Digest::MD5'				=> 0,
 		'Class::Accessor::Fast::XS'	=> 0,
 		'Storable'					=> 2.05,
-		'GD::Graph::linespoints'	=> 0,
+        'GD::Graph::linespoints'    => 0,
+        'FreezeThaw'                => 0,
+		'Parallel::ForkManager'	    => 0,
     },
+    BUILD_REQUIRES => {
+        'Test::More'           => 0,
+        'FindBin'              => 0,
+        'Time::HiRes'          => 0,
+        'Sys::Info'            => 0,
+        'Sys::Info::Constants' => 0,
+    }
 );
